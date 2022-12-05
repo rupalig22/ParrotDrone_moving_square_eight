@@ -3,6 +3,7 @@ import rospy
 import actionlib
 from geometry_msgs.msg import Twist
 import time
+import math
 from std_msgs.msg import Empty
 from parrot_moving_square.msg import ArdroneSquareFeedback  as TestFeedback
 from parrot_moving_square.msg import ArdroneSquareResult as TestResult
@@ -131,15 +132,28 @@ class droneflyClass:
     
     def moving_square(self, side_size):
         # Move Forwards
-        self.do_a_move(side_size, 0.2, 0.0)
+        self.do_a_move(10, 1.0, 0.0)
         # Stop
-        self.do_a_move(2.0, 0, 0.0)
+        self.do_a_move(1.0, 0, 0.0)
         # Turn
-        self.do_a_move(4, 0, 0.4)
+        self.do_a_move(2.0, 0, math.pi/2)
         # Stop
-        self.do_a_move(0.5, 0, 0.0)
+        self.do_a_move(1.0, 0, 0.0)
         
         return True
+    #This part is to provide drone with horizontal trajectory. 
+    #Comment the above moving_square function before uncommenting the below moving_square function  
+    #def moving_square(self, side_size):
+        # Move Forwards
+        #self.do_a_move(20, 3.0, 1.0)
+        # Stop
+        #self.do_a_move(4.0, 0, 0.0)
+        # Turn
+        #self.do_a_move(2.0, 3.0, -1.0)
+        # Stop
+        #self.do_a_move(1.0, 0, 0.0)
+        
+        return True  
         
     def do_a_move(self, timing, linearist, angularist):
         #create the object to move
