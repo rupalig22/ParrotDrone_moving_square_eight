@@ -141,7 +141,7 @@ class droneflyClass:
         self.do_a_move(1.0, 0, 0.0)
         
         return True
-    #This part is to provide drone with horizontal trajectory. 
+    #This part is to provide drone with horizontal eight trajectory. 
     #Comment the above moving_square function before uncommenting the below moving_square function  
     #def moving_square(self, side_size):
         # Move Forwards
